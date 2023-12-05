@@ -1,0 +1,9 @@
+d:\users\michael\documents\visual studio 2013\Projects\6502\6502\bin\Debug\6502.exe.config
+d:\users\michael\documents\visual studio 2013\Projects\6502\6502\obj\Debug\6502.csprojResolveAssemblyReference.cache
+d:\users\michael\documents\visual studio 2013\Projects\6502\6502\obj\Debug\_6502.Properties.Resources.resources
+d:\users\michael\documents\visual studio 2013\Projects\6502\6502\obj\Debug\6502.csproj.GenerateResource.Cache
+d:\users\michael\documents\visual studio 2013\Projects\6502\6502\bin\Debug\6502.exe
+d:\users\michael\documents\visual studio 2013\Projects\6502\6502\bin\Debug\6502.pdb
+d:\users\michael\documents\visual studio 2013\Projects\6502\6502\obj\Debug\6502.exe
+d:\users\michael\documents\visual studio 2013\Projects\6502\6502\obj\Debug\6502.pdb
+d:\users\michael\documents\visual studio 2013\Projects\6502\6502\obj\Debug\_6502.Form1.resources
