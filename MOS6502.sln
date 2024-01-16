@@ -5,6 +5,8 @@ VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MOS6502", "MOS6502.csproj", "{9342B729-13B0-4040-BDF0-20D11B335371}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "6502 emu", "C:\Users\ottad\OneDrive\Рабочий стол\MOS6502_Emulator_C#\Emulator\6502 emu\6502 emu.csproj", "{2DDCEDF3-77B7-41BC-919C-BD25F64EC5DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{9342B729-13B0-4040-BDF0-20D11B335371}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9342B729-13B0-4040-BDF0-20D11B335371}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9342B729-13B0-4040-BDF0-20D11B335371}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DDCEDF3-77B7-41BC-919C-BD25F64EC5DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DDCEDF3-77B7-41BC-919C-BD25F64EC5DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DDCEDF3-77B7-41BC-919C-BD25F64EC5DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DDCEDF3-77B7-41BC-919C-BD25F64EC5DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
