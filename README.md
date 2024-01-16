@@ -27,10 +27,10 @@ NOP
 
 Transfer Operations:
 TAX, TAY, TXA, TYA
-
-
 TSX, TXS
-Stack Operations:
 
+Stack Operations:
 PHA, PHP, PLA, PLP
+
+
 
