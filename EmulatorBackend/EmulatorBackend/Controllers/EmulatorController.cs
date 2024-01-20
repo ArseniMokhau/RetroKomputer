@@ -115,6 +115,25 @@ namespace EmulatorBackend.Controllers
             }
         }
 
+        [HttpPost("dump-params")]
+        public ActionResult<string> DumpParams()
+        {
+            try
+            {
+                var emulator = emulatorService.GetEmulator();
+                // Convert each byte in memory dump to its hexadecimal representation
+                string hexParamsDump = string.Join(", ", emulator.Accumulator, emulator.XRegister, emulator.YRegister);
+
+                // Return the result as a string
+                return Ok(hexParamsDump);
+            }
+            catch (Exception ex)
+            {
+                // Handle any errors, perhaps log them for further investigation
+                return BadRequest($"Error: {ex.Message}");
+            }
+        }
+
         [HttpPost("cancel-process")]
         public ActionResult<string> CancelProcess()
         {
