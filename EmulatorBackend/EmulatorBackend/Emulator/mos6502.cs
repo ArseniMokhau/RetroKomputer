@@ -25,6 +25,8 @@ namespace EmulatorBackend.Emulator
             get { return _programCounter; }
             private set { _programCounter = value; }
         }
+
+        private ushort expectedProgramCounter;
         public bool CarryF { get; protected set; }
         public bool ZeroF { get; private set; }
         public bool DecimalF { get; private set; }
@@ -35,7 +37,12 @@ namespace EmulatorBackend.Emulator
             Memory = new byte[0x10000];
             ConsoleOutput = "";
         }
-        public void LoadProgram(int offset, byte[] program)
+        public bool InfLoop { get; private set; }
+
+        private int instructionCounter;
+        private const int MaxInstructions = 10000;
+
+        public void LoadProgram(ushort offset, byte[] program)
         {
             if (offset > Memory.Length)
             {
@@ -50,10 +57,58 @@ namespace EmulatorBackend.Emulator
             for (var i = 0; i < program.Length; i++)
             {
                 Memory[i + offset] = program[i];
+                ProgramCounter = offset;
+                expectedProgramCounter = (ushort)Math.Min(ushort.MaxValue, offset + program.Length);
             }
-
             Reset();
         }
+
+        public void RunProgram()
+        {
+            instructionCounter = 0;
+            InfLoop = false;
+            while (!ShouldTerminate())
+            {
+                Console.WriteLine("Current OpCode: " + CurrentOpCode.ToString("X2"));
+                NextStep();
+
+                // Check for infinite loop
+                if (instructionCounter > MaxInstructions)
+                {
+                    Console.WriteLine("Infinite loop detected. Terminating program.");
+                    InfLoop = true;
+                    break;
+                }
+            }
+        }
+
+        private void NextStep()
+        {
+            instructionCounter++;
+
+            ProgramCounter++;
+            ExecuteInstruction();
+
+            CurrentOpCode = ReadMemoryValue(ProgramCounter);
+
+            if (_nmiRequested)
+            {
+                HandleNMI();
+                _nmiRequested = false;
+            }
+            else if (_irqRequested)
+            {
+                HandleIRQ();
+                _irqRequested = false;
+            }
+        }
+
+        private bool ShouldTerminate()
+        {
+            // Terminate when reaching the expectedProgramCounter or exceeding the instruction limit
+            return ProgramCounter == expectedProgramCounter || instructionCounter > MaxInstructions;
+        }
+
         public void TriggerInterruptRequest()
         {
             _irqRequested = true;
@@ -62,6 +117,12 @@ namespace EmulatorBackend.Emulator
         public void TriggerNonMaskableInterrupt()
         {
             _nmiRequested = true;
+        }
+
+        public void StopProgram()
+        {
+            ProgramCounter = expectedProgramCounter;
+            ShouldTerminate();
         }
 
         public void ClearMemory()
@@ -110,26 +171,6 @@ namespace EmulatorBackend.Emulator
         {
             ProgramCounter = (ushort)(Memory[0xFFFC] | (Memory[0xFFFD] << 8));
             CurrentOpCode = Memory[ProgramCounter];
-        }
-
-        public void NextStep()
-        {
-            ProgramCounter++;
-
-            ExecuteInstruction();
-
-            CurrentOpCode = ReadMemoryValue(ProgramCounter);
-
-            if (_nmiRequested)
-            {
-                HandleNMI();
-                _nmiRequested = false;
-            }
-            else if (_irqRequested)
-            {
-                HandleIRQ();
-                _irqRequested = false;
-            }
         }
 
         private void HandleNMI()
@@ -818,6 +859,18 @@ namespace EmulatorBackend.Emulator
                 // BNE - Branch if Not Equal
                 case 0xD0:
                     {
+                        sbyte offset = (sbyte)ReadMemoryValue(ProgramCounter); // Read the signed 8-bit offset
+
+                        if (!ZeroF) // If Zero flag is not set (i.e., not equal), branch
+                        {
+                            // Calculate the target address
+                            int targetAddress = ProgramCounter + offset;
+
+                            // Set the new ProgramCounter value
+                            ProgramCounter = (ushort)targetAddress;
+
+                        }
+
                         break;
                     }
                 // BPL - Branch if Plus (Positive)

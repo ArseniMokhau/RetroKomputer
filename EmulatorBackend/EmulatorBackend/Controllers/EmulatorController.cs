@@ -33,16 +33,23 @@ namespace EmulatorBackend.Controllers
                 // Load and execute the program in the emulator
                 emulator.LoadProgram(0, programBytes);
 
-                while (emulator.CurrentOpCode != 0xEA)
+                emulator.RunProgram();
+
+                if (emulator.InfLoop)
                 {
-                    emulator.NextStep();
+                    emulator.ClearEverything();
+                    throw new Exception("Emulator has encountered an error. Terminating program."); 
                 }
+                else
+                {
 
-                // Convert each byte in memory dump to its hexadecimal representation
-                string hexMemoryDump = string.Join(", ", emulator.DumpMemory().Select(b => $"0x{b:X2}"));
 
-                // Return the result as a string
-                return Ok(hexMemoryDump);
+                    // Convert each byte in memory dump to its hexadecimal representation
+                    string hexMemoryDump = string.Join(", ", emulator.DumpMemory().Select(b => $"0x{b:X2}"));
+
+                    // Return the result as a string
+                    return Ok(hexMemoryDump);
+                }  
             }
             catch (Exception ex)
             {
@@ -66,16 +73,21 @@ namespace EmulatorBackend.Controllers
                 // Load and execute the program in the emulator
                 emulator.LoadProgram(0, programBytes);
 
-                while (emulator.CurrentOpCode != 0xEA)
+                emulator.RunProgram(); 
+
+                if (emulator.InfLoop)
                 {
-                    emulator.NextStep();
+                    emulator.ClearEverything();
+                    throw new Exception("Emulator has encountered an error. Terminating program.");
                 }
+                else
+                {
+                    // Convert each byte in memory dump to its hexadecimal representation
+                    string hexMemoryDump = string.Join(", ", emulator.DumpMemory().Select(b => $"0x{b:X2}"));
 
-                // Convert each byte in memory dump to its hexadecimal representation
-                string hexMemoryDump = string.Join(", ", emulator.DumpMemory().Select(b => $"0x{b:X2}"));
-
-                // Return the result as a string
-                return Ok(hexMemoryDump);
+                    // Return the result as a string
+                    return Ok(hexMemoryDump);
+                }
             }
             catch (Exception ex)
             {
@@ -110,7 +122,7 @@ namespace EmulatorBackend.Controllers
             {
                 var emulator = emulatorService.GetEmulator();
                 // Invoke the magical interruption to halt the ongoing process
-                emulator.TriggerNonMaskableInterrupt();
+                emulator.StopProgram();
 
                 // Return a message to signify the successful cancellation
                 return Ok("The ongoing process has been halted.");
