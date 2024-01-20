@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">RetroKomputer_Front</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">RetroKomputer</string>
+    <string name="nav_header_subtitle">Inżynieria oprogramowania</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_information">Information</string>
+    <string name="menu_basicinstructions">Basic Instructions</string>
+    <string name="menu_AdvancedInstructions">Advanced Instructions</string>
+    <string name="menu_TryYourSelf">"Try your self"</string>
+</resources>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_information">
+
+    <fragment
+        android:id="@+id/nav_information"
+        android:name="com.aplication.retrokomputer_front.ui.Information.InformationFragment"
+        android:label="@string/menu_information"
+        tools:layout="@layout/fragment_information" />
+
+    <fragment
+        android:id="@+id/nav_BasicInstructions"
+        android:name="com.aplication.retrokomputer_front.ui.BasicInstructions.BasicInstructionsFragment"
+        android:label="@string/menu_basicinstructions"
+        tools:layout="@layout/fragment_basic" />
+
+    <fragment
+        android:id="@+id/nav_AdvancedInstructions"
+        android:name="com.aplication.retrokomputer_front.ui.AdvancedInstructions.AdvancedInstructionsFragment"
+        android:label="@string/menu_AdvancedInstructions"
+        tools:layout="@layout/fragment_advanced" />
+
+    <fragment
+    android:id="@+id/nav_TryYourSelf"
+    android:name="com.aplication.retrokomputer_front.ui.TryYourSelf.TryYourSelfFragment"
+    android:label="@string/menu_TryYourSelf"
+    tools:layout="@layout/fragment_tryyourself"
+        />
+</navigation>
