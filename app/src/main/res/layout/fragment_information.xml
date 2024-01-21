@@ -35,6 +35,13 @@
             android:layout_margin="4dp"
             android:background="@drawable/indicator_selector" />
 
+        <View
+            android:id="@+id/indicator_3"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/indicator_selector" />
+
         <!-- You can add more indicators for additional fragments if needed -->
 
     </LinearLayout>

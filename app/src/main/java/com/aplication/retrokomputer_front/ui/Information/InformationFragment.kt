@@ -32,15 +32,18 @@ class InformationFragment : Fragment(R.layout.fragment_information) {
     private fun updateIndicators(position: Int) {
         val indicator1: View = requireView().findViewById(R.id.indicator_1)
         val indicator2: View = requireView().findViewById(R.id.indicator_2)
+        val indicator3: View = requireView().findViewById(R.id.indicator_3)
 
         // Reset indicators
         indicator1.isSelected = false
         indicator2.isSelected = false
+        indicator3.isSelected = false
 
         // Set the selected indicator based on the current page
         when (position) {
             0 -> indicator1.isSelected = true
             1 -> indicator2.isSelected = true
+            2 -> indicator3.isSelected = true
             // Add more cases for additional fragments if needed
         }
     }
@@ -50,13 +53,14 @@ class InformationFragment : Fragment(R.layout.fragment_information) {
 class InformationPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
     override fun getItemCount(): Int {
-        return 2 // The number of fragments you want to display
+        return 3 // The number of fragments you want to display
     }
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> FragmentOne()
             1 -> FragmentTwo()
+            2 -> FragmentThree()
             else -> throw IllegalArgumentException("Invalid position")
         }
     }
@@ -66,3 +70,5 @@ class InformationPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragmen
 class FragmentOne : Fragment(R.layout.fragment_one_information)
 
 class FragmentTwo : Fragment(R.layout.fragment_two_information)
+class FragmentThree : Fragment(R.layout.fragment_three_information)
+
