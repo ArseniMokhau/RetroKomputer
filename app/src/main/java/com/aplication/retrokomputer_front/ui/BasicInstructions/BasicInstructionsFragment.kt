@@ -1,5 +1,6 @@
 package com.aplication.retrokomputer_front.ui.BasicInstructions
 
+import InstructionDetailsDialogFragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -32,10 +33,9 @@ class BasicInstructionsFragment : Fragment() {
         _binding = FragmentBasicBinding.inflate(inflater, container, false)
         val root = _binding?.root
 
-        recyclerView = root?.findViewById(R.id.recyclerView) ?: RecyclerView(requireContext()) // Обновлено здесь
+        recyclerView = root?.findViewById(R.id.recyclerView) ?: RecyclerView(requireContext())
         adapter = InstructionAdapter(instructionsList) { position ->
-            // Обработка нажатия на элемент списка (вызов следующего фрагмента и т. д.)
-            // Например, вы можете использовать Intent для открытия новой активности или фрагмента
+            showInstructionDetailsDialog(position)
         }
 
         recyclerView.adapter = adapter
@@ -47,5 +47,11 @@ class BasicInstructionsFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun showInstructionDetailsDialog(position: Int) {
+        val fragmentManager = requireActivity().supportFragmentManager
+        val detailsDialog = InstructionDetailsDialogFragment()
+        detailsDialog.show(fragmentManager, "InstructionDetailsDialog")
     }
 }
