@@ -20,13 +20,15 @@ namespace EmulatorBackend.Emulator
         public byte XRegister { get; private set; }
         public byte YRegister { get; private set; }
         public byte CurrentOpCode { get; private set; }
+
+        public byte StackPointer { get; set; }
         public ushort ProgramCounter
         {
             get { return _programCounter; }
             private set { _programCounter = value; }
         }
 
-        private ushort expectedProgramCounter;
+        // private ushort expectedProgramCounter;
         public bool CarryF { get; protected set; }
         public bool ZeroF { get; private set; }
         public bool DecimalF { get; private set; }
@@ -35,10 +37,11 @@ namespace EmulatorBackend.Emulator
         public mos6502()
         {
             Memory = new byte[0x10000];
+            StackPointer = 0xFF;
             ConsoleOutput = "";
         }
         public bool InfLoop { get; private set; }
-
+        private bool programTerminated = false;
         private int instructionCounter;
         private const int MaxInstructions = 10000;
 
@@ -57,9 +60,9 @@ namespace EmulatorBackend.Emulator
             for (var i = 0; i < program.Length; i++)
             {
                 Memory[i + offset] = program[i];
-                ProgramCounter = offset;
-                expectedProgramCounter = (ushort)Math.Min(ushort.MaxValue, offset + program.Length);
+                // expectedProgramCounter = (ushort)Math.Min(ushort.MaxValue, offset + program.Length);
             }
+            ProgramCounter = offset;
             Reset();
         }
 
@@ -106,7 +109,7 @@ namespace EmulatorBackend.Emulator
         private bool ShouldTerminate()
         {
             // Terminate when reaching the expectedProgramCounter or exceeding the instruction limit
-            return ProgramCounter == expectedProgramCounter || instructionCounter > MaxInstructions;
+            return instructionCounter > MaxInstructions || programTerminated; /* ProgramCounter ==  expectedProgramCounter ||*/
         }
 
         public void TriggerInterruptRequest()
@@ -121,8 +124,8 @@ namespace EmulatorBackend.Emulator
 
         public void StopProgram()
         {
-            ProgramCounter = expectedProgramCounter;
-            ShouldTerminate();
+            // ProgramCounter = expectedProgramCounter;
+            programTerminated = true;
         }
 
         public void ClearMemory()
@@ -381,6 +384,18 @@ namespace EmulatorBackend.Emulator
                 // Zero Page,X
                 case 0x35:
                     {
+                        // Calculate the effective address by adding X register to the Zero Page address
+                        int address = (Memory[ProgramCounter] + XRegister) & 0xFF;
+
+                        // Perform the AND operation
+                        Accumulator &= Memory[address];
+
+                        // Set flags based on the result
+                        SetZeroFlag(Accumulator);
+                        SetNegativeFlag(Accumulator);
+
+                        // Increment the program counter by 2 (opcode + zero page address)
+                        ProgramCounter += 1;
                         break;
                     }
                 // Absolute
@@ -844,16 +859,56 @@ namespace EmulatorBackend.Emulator
                 // BCS - Branch if Carry Set
                 case 0xB0:
                     {
+                        // Read the relative offset from memory
+                        byte offset = Memory[ProgramCounter];
+
+                        // Check if the Zero Flag is set
+                        if (CarryF)
+                        {
+                            // Calculate the target address for the branch
+                            int targetAddress = ProgramCounter + (sbyte)offset;
+
+                            // Update the program counter if the branch is taken
+                            ProgramCounter = (ushort)targetAddress;
+                        }
+
                         break;
                     }
                 // BEQ - Branch if Equal
                 case 0xF0:
                     {
+                        // Read the relative offset from memory
+                        byte offset = Memory[ProgramCounter];
+
+                        // Check if the Zero Flag is set
+                        if (ZeroF)
+                        {
+                            // Calculate the target address for the branch
+                            int targetAddress = ProgramCounter + (sbyte)offset;
+
+                            // Update the program counter if the branch is taken
+                            ProgramCounter = (ushort)targetAddress;
+                        }
+
                         break;
                     }
                 // BMI - Branch if Minus (Negative)
                 case 0x30:
                     {
+                        // Read the signed 8-bit offset from memory
+                        sbyte offset = (sbyte)Memory[ProgramCounter];
+
+                        // Increment the program counter
+                        ProgramCounter += 1;
+
+                        // Check the Negative Flag
+                        if (NegativeF)
+                        {
+                            // Branch if Negative Flag is set
+                            ProgramCounter = (ushort)(ProgramCounter + offset);
+                        }
+
+                        // No need to increment the program counter here, as the branch already modifies it
                         break;
                     }
                 // BNE - Branch if Not Equal
@@ -948,6 +1003,19 @@ namespace EmulatorBackend.Emulator
                 // Zero Page
                 case 0xC5:
                     {
+                        // Read the immediate value from memory
+                        byte value = Memory[ProgramCounter];
+
+                        // Perform the comparison
+                        int result = Accumulator - value;
+
+                        // Set flags based on the result
+                        SetZeroFlag(result);
+                        SetNegativeFlag(result);
+                        CarryF = Accumulator >= value; // Set Carry Flag if Accumulator is greater or equal
+
+                        // Increment the program counter
+                        ProgramCounter += 1;
                         break;
                     }
                 // Zero Page, X
@@ -1050,7 +1118,13 @@ namespace EmulatorBackend.Emulator
                 // Implied
                 case 0x00:
                     {
+                        /*
+                        TriggerNonMaskableInterrupt();
                         ProgramCounter++;
+                        */
+
+                        // For now, when we reach 0x00, the program is terminated
+                        StopProgram();
                         break;
                     }
 
@@ -1060,6 +1134,23 @@ namespace EmulatorBackend.Emulator
                 // Absolute
                 case 0x4C:
                     {
+                        // Read the low byte of the target address
+                        byte lowByte = Memory[ProgramCounter];
+
+                        // Increment the program counter
+                        ProgramCounter += 1;
+
+                        // Read the high byte of the target address
+                        byte highByte = Memory[ProgramCounter];
+
+                        // Increment the program counter again
+                        ProgramCounter += 1;
+
+                        // Set the program counter to the target address
+                        ProgramCounter = (ushort)((highByte << 8) | lowByte);
+
+                        // No additional flags to set for JMP
+
                         break;
                     }
                 // Indirect
@@ -1074,6 +1165,26 @@ namespace EmulatorBackend.Emulator
                 // Absolute
                 case 0x20:
                     {
+                        // Read the low byte of the target address
+                        byte lowByte = Memory[ProgramCounter];
+
+                        ProgramCounter += 1;
+
+                        // Read the high byte of the target address
+                        byte highByte = Memory[ProgramCounter];
+
+                        ProgramCounter += 1;
+
+                        // Calculate the target address
+                        ushort targetAddress = (ushort)((highByte << 8) | lowByte);
+
+                        // Push the return address onto the stack (address of the instruction following JSR)
+                        StackPush((byte)((ProgramCounter + 3) >> 8));
+                        StackPush((byte)(ProgramCounter + 3));
+
+                        // Set the program counter to the target address
+                        ProgramCounter = targetAddress;
+
                         break;
                     }
 
@@ -1122,7 +1233,18 @@ namespace EmulatorBackend.Emulator
                 // Zero Page 
                 case 0xA5:
                     {
-                        // Implementation for LDA Zero Page
+                        // Read the zero-page address from memory
+                        byte zeroPageAddress = Memory[ProgramCounter];
+
+                        // Read the value from the zero-page address and load it into the Accumulator
+                        Accumulator = Memory[zeroPageAddress];
+
+                        // Set flags based on the result
+                        SetZeroFlag(Accumulator);
+                        SetNegativeFlag(Accumulator);
+
+                        // Increment the program counter
+                        ProgramCounter += 1;
                         break;
                     }
                 // Zero Page, X
@@ -1134,7 +1256,24 @@ namespace EmulatorBackend.Emulator
                 // Absolute 
                 case 0xAD:
                     {
-                        // Implementation for LDA Absolute
+                        // Read the low byte of the absolute address
+                        byte lowByte = Memory[ProgramCounter];
+                        ProgramCounter += 1;
+
+                        // Read the high byte of the absolute address
+                        byte highByte = Memory[ProgramCounter];
+                        ProgramCounter += 1;
+
+                        // Calculate the absolute address
+                        ushort absoluteAddress = (ushort)((highByte << 8) | lowByte);
+
+                        // Load the accumulator with the value from the absolute address
+                        Accumulator = Memory[absoluteAddress];
+
+                        // Set flags based on the result
+                        SetZeroFlag(Accumulator);
+                        SetNegativeFlag(Accumulator);
+
                         break;
                     }
                 // Absolute, X
@@ -1271,7 +1410,20 @@ namespace EmulatorBackend.Emulator
                 // Absolute
                 case 0x8D:
                     {
-                        // STA Absolute
+                        // Read the low byte of the absolute address
+                        int lowByte = Memory[ProgramCounter];
+                        ProgramCounter += 1;
+
+                        // Read the high byte of the absolute address
+                        int highByte = Memory[ProgramCounter];
+                        ProgramCounter += 1;
+
+                        // Calculate the absolute address
+                        int absoluteAddress = (highByte << 8) | lowByte;
+
+                        // Store the contents of the Accumulator into the specified memory address
+                        Memory[absoluteAddress] = Accumulator;
+
                         break;
                     }
                 // Absolute,X
@@ -1382,7 +1534,9 @@ namespace EmulatorBackend.Emulator
                 // SEC - Set Carry
                 case 0x38:
                     {
+                        // Set Carry Flag
                         CarryF = true;
+
                         break;
                     }
                 // SED - Set Decimal
@@ -1474,7 +1628,9 @@ namespace EmulatorBackend.Emulator
                 // Implied
                 case 0xBA:
                     {
-                        // Implementation for TSX
+                        // Transfer Stack Pointer to X
+                        StackPointer = XRegister;
+
                         break;
                     }
                 #endregion
@@ -1482,7 +1638,9 @@ namespace EmulatorBackend.Emulator
                 // Implied
                 case 0x9A:
                     {
-                        // Implementation for TXS
+                        // Push X onto the stack
+                        StackPush(XRegister);
+
                         break;
                     }
                 #endregion
@@ -1494,7 +1652,9 @@ namespace EmulatorBackend.Emulator
                 #region Push Accumulator to Stack (PHA)
                 case 0x48:
                     {
-                        // Implementation for PHA
+                        // Push the contents of the Accumulator onto the stack
+                        StackPush(Accumulator);
+
                         break;
                     }
                 #endregion
@@ -1510,7 +1670,15 @@ namespace EmulatorBackend.Emulator
                 #region Pull Accumulator from Stack (PLA)
                 case 0x68:
                     {
-                        // Implementation for PLA
+                        // Pull a byte from the stack and load it into the Accumulator
+                        Accumulator = PopFromStack();
+
+                        // Set flags based on the result
+                        SetZeroFlag(Accumulator);
+                        SetNegativeFlag(Accumulator);
+
+                        // Increment the program counter
+                        ProgramCounter += 1;
                         break;
                     }
                 #endregion
@@ -1531,6 +1699,25 @@ namespace EmulatorBackend.Emulator
                     break;
             }
         }
+
+        private void StackPush(byte value)
+        {
+            // Decrement the stack pointer
+            StackPointer--;
+
+            // Store the value at the current stack pointer position
+            Memory[0x100+ StackPointer] = value;
+        }
+
+        private byte PopFromStack()
+        {
+            // The stack pointer points to the next empty location on the stack
+            StackPointer++;
+
+            // Read the byte from the stack
+            return Memory[0x100 + StackPointer];
+        }
+
         private void SetNegativeFlag(int value)
         {
             NegativeF = (value & 0x80) != 0;
