@@ -24,6 +24,8 @@
         <item name="android:textColor">#FFFFFF</item> <!-- Цвет текста на кнопке (белый) -->
     </style>
 
+
+
     <style name="Theme.RetroKomputer_Front.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.RetroKomputer_Front.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
