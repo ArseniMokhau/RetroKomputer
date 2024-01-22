@@ -13,6 +13,8 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
+import androidx.navigation.ui.onNavDestinationSelected
 import com.aplication.retrokomputer_front.databinding.ActivityMainBinding
 import com.aplication.retrokomputer_front.ui.TryYourSelf.TryYourSelfActivity
 
@@ -44,14 +46,20 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        navView.setNavigationItemSelectedListener { menuItem ->
-            when (menuItem.itemId) {
+        navView.setNavigationItemSelectedListener { item ->
+            when (item.itemId) {
                 R.id.nav_TryYourSelf -> {
-                    // Здесь обрабатывайте нажатие на "Try Your Self"
                     openTryYourselfActivity()
                     true
                 }
-                else -> false
+                else -> {
+                    val handled = item.onNavDestinationSelected(navController)
+                    if (handled) {
+                        drawerLayout.closeDrawer(GravityCompat.START)
+                    }
+                    handled || super.onOptionsItemSelected(item)
+
+                }
             }
         }
 

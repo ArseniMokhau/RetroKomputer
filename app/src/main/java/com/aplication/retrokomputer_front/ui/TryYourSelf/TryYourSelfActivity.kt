@@ -26,6 +26,8 @@ class TryYourSelfActivity : AppCompatActivity() {
         super.onCreate(savenInstanceState)
         setContentView(R.layout.activity_tryyourself)
 
+        Log.d("TryYourSelfActivity", "onCreate called")
+
         val inputEditText : EditText = findViewById(R.id.InputEditText)
         val outputTextView : TextView = findViewById(R.id.outputTextView)
         val dumpButton : Button = findViewById(R.id.DumpButton)

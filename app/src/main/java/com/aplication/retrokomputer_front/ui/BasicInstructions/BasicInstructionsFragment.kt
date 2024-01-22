@@ -3,6 +3,7 @@ package com.aplication.retrokomputer_front.ui.BasicInstructions
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,6 +28,7 @@ class BasicInstructionsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        Log.d("BasicInstructionsFragment", "onViewCreated")
         _binding = FragmentBasicBinding.inflate(inflater, container, false)
         val root = _binding?.root
 
