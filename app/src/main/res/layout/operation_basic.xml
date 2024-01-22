@@ -5,66 +5,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/cleareverything"
-        style="@style/TextAppearance.AppCompat.Widget.Button.Colored"
-        android:layout_width="80dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginBottom="25dp"
-        android:gravity="center"
-        android:text="Information"
-        android:textSize="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:backgroundTint="#800080"
-        android:radius="36dp" />
-
-    <Button
-        android:id="@+id/singleexecute"
-        style="@style/TextAppearance.AppCompat.Widget.Button.Colored"
-        android:layout_width="80dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="25dp"
-        android:gravity="center"
-        android:text="Start"
-        android:textSize="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/DumpButton"
-        app:layout_constraintStart_toEndOf="@+id/cleareverything"
-        android:backgroundTint="#800080"
-        android:radius="36dp" />
-
-    <Button
-        android:id="@+id/DumpButton"
-        style="@style/TextAppearance.AppCompat.Widget.Button.Colored"
-        android:layout_width="80dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="25dp"
-        android:gravity="center"
-        android:text="Dump Memory"
-        android:textSize="10dp"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        style="@style/PurpleButton"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:backgroundTint="#800080"
-        android:radius="36dp"/>
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_menu" />
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintTop_toBottomOf="@+id/DumpButton">
-
+        android:id="@+id/outputScrollView"
+        android:layout_width="323dp"
+        android:layout_height="510dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/OuputWindow"
-            android:layout_width="wrap_content"
+            android:id="@+id/outputWindow"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginEnd="40dp"
-            android:text="Output"
-            android:textAlignment="textStart"
-            android:textSize="16dp" />
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:text="Result"
+            android:textSize="20sp" />
+
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

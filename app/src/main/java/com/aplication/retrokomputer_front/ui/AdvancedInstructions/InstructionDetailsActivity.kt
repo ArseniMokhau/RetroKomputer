@@ -20,7 +20,7 @@ class InstructionDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.operation_advanced)
 
-        val outputTextView: TextView = findViewById(R.id.OuputWindowAdvanced)
+        val outputTextView: TextView = findViewById(R.id.outputWindowAdvanced)
         val startButton: Button = findViewById(R.id.StartButtonAdvanced)
         val dumpButton: Button = findViewById(R.id.DumpButtonAdvanced)
 

@@ -19,6 +19,11 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="PurpleButton" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:backgroundTint">#800080</item> <!-- Цвет фона кнопки (фиолетовый) -->
+        <item name="android:textColor">#FFFFFF</item> <!-- Цвет текста на кнопке (белый) -->
+    </style>
+
     <style name="Theme.RetroKomputer_Front.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.RetroKomputer_Front.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />

@@ -12,4 +12,8 @@
     <string name="menu_AdvancedInstructions">Advanced Instructions</string>
     <string name="menu_TryYourSelf">"Try yourself"</string>
     <string name="title_instruction_details">Bla bla</string>
+    <string name="title_activity_bottom">Bottom</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
