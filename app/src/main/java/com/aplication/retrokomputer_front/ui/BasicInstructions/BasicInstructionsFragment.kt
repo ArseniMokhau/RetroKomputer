@@ -1,6 +1,7 @@
 package com.aplication.retrokomputer_front.ui.BasicInstructions
 
-import InstructionDetailsDialogFragment
+
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,11 +19,7 @@ class BasicInstructionsFragment : Fragment() {
     private lateinit var adapter: InstructionAdapter
 
     private val instructionsList = listOf(
-        "LDX (Load X register with a constant)",
-        "LDY (Load Y register with a constant)",
-        "LDA (Load Accumulator with a constant)",
-        "NOP (No Operation)",
-        "INX (Increment X register)"
+        "0xA2", "0x02", "0xA0", "0x03", "0xA9", "0x04"
     )
 
     override fun onCreateView(
@@ -35,7 +32,11 @@ class BasicInstructionsFragment : Fragment() {
 
         recyclerView = root?.findViewById(R.id.recyclerView) ?: RecyclerView(requireContext())
         adapter = InstructionAdapter(instructionsList) { position ->
-            showInstructionDetailsDialog(position)
+
+            val selectedOpcode = instructionsList[position]
+            val intent = Intent(requireContext(), InstructionDetailsActivity::class.java)
+            intent.putExtra("OPCODE_KEY", selectedOpcode)
+            startActivity(intent)
         }
 
         recyclerView.adapter = adapter
@@ -49,9 +50,5 @@ class BasicInstructionsFragment : Fragment() {
         _binding = null
     }
 
-    private fun showInstructionDetailsDialog(position: Int) {
-        val fragmentManager = requireActivity().supportFragmentManager
-        val detailsDialog = InstructionDetailsDialogFragment()
-        detailsDialog.show(fragmentManager, "InstructionDetailsDialog")
-    }
+
 }

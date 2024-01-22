@@ -6,55 +6,65 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/StartButton"
-        android:layout_width="58dp"
-        android:layout_height="26dp"
-        android:text="Start"
-        android:textAlignment="center"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/InformationButton"
+        style="@style/TextAppearance.AppCompat.Widget.Button.Colored"
+        android:layout_width="80dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="25dp"
+        android:gravity="center"
+        android:text="Information"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="660dp" />
+        android:backgroundTint="#800080"
+        android:radius="36dp" />
 
     <Button
-        android:id="@+id/InfoButton"
-        android:layout_width="76dp"
-        android:layout_height="29dp"
-        android:text="Information"
-        android:textAlignment="center"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toStartOf="@+id/StartButton"
-        app:layout_constraintHorizontal_bias="0.26"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="660dp" />
+        android:id="@+id/StartButton"
+        style="@style/TextAppearance.AppCompat.Widget.Button.Colored"
+        android:layout_width="80dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="25dp"
+        android:gravity="center"
+        android:text="Start"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/DumpButton"
+        app:layout_constraintStart_toEndOf="@+id/InformationButton"
+        android:backgroundTint="#800080"
+        android:radius="36dp" />
 
     <Button
         android:id="@+id/DumpButton"
-        android:layout_width="58dp"
-        android:layout_height="26dp"
+        style="@style/TextAppearance.AppCompat.Widget.Button.Colored"
+        android:layout_width="80dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="25dp"
+        android:gravity="center"
         android:text="Dump Memory"
-        android:textAlignment="center"
-        android:textSize="10sp"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.79"
-        app:layout_constraintStart_toEndOf="@+id/InfoButton"
-        tools:layout_editor_absoluteY="660dp" />
+        android:backgroundTint="#800080"
+        android:radius="36dp"/>
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="377dp"
-        android:layout_height="507dp"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="119dp" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@+id/DumpButton">
 
-    <TextView
-        android:id="@+id/nameOfInstruction"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Name of Instruction"
-        android:textSize="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="26dp" />
+
+        <TextView
+            android:id="@+id/OuputWindow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:text="Output"
+            android:textAlignment="textStart"
+            android:textSize="16dp" />
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
