@@ -6,46 +6,50 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/advancedoptionsbutton"
-        android:layout_width="361dp"
-        android:layout_height="45dp"
+        android:id="@+id/cleareverything"
+        style="@style/TextAppearance.AppCompat.Widget.Button.Colored"
+        android:layout_width="354dp"
+        android:layout_height="54dp"
         android:layout_marginBottom="25dp"
+        android:backgroundTint="#800080"
         android:gravity="center"
-        android:text="Advanced Options"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/StartButton"
+        android:radius="36dp"
+        android:text="Clear Everything"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/singleexecute"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/InformationButton"
+        android:id="@+id/dumpparametrs"
         style="@style/TextAppearance.AppCompat.Widget.Button.Colored"
         android:layout_width="80dp"
         android:layout_height="48dp"
         android:layout_marginStart="25dp"
         android:layout_marginBottom="25dp"
+        android:backgroundTint="#800080"
         android:gravity="center"
-        android:text="Information"
+        android:radius="36dp"
+        android:text="Dump Parametrs"
         android:textSize="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:backgroundTint="#800080"
-        android:radius="36dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/StartButton"
+        android:id="@+id/singleexecute"
         style="@style/TextAppearance.AppCompat.Widget.Button.Colored"
         android:layout_width="80dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="#800080"
         android:gravity="center"
-        android:text="Start"
+        android:radius="36dp"
+        android:text="Single Execute"
         android:textSize="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/DumpButton"
-        app:layout_constraintStart_toEndOf="@+id/InformationButton"
-        android:backgroundTint="#800080"
-        android:radius="36dp" />
+        app:layout_constraintEnd_toStartOf="@+id/DumpButton" />
 
     <Button
         android:id="@+id/DumpButton"
@@ -65,8 +69,8 @@
 
     <EditText
         android:id="@+id/InputEditText"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="378dp"
+        android:layout_height="64dp"
         android:layout_marginStart="25dp"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="25dp"
@@ -75,6 +79,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.48000002"
         app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintWidth_default="spread">
 
@@ -82,12 +87,13 @@
 
     <ScrollView
         android:id="@+id/outputScrollView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="385dp"
+        android:layout_height="388dp"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/advancedoptionsbutton"
+        android:layout_marginBottom="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/cleareverything"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/InputEditText">
 

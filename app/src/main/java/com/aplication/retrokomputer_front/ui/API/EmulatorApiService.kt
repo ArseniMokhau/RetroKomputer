@@ -14,21 +14,21 @@ interface EmulatorApiService {
 
     @Headers("Content-Type: application/json")
     @POST("single-execute-program")
-    fun singleExecuteProgram(@Body program: String): Call<String>
+    fun singleExecuteProgram(@Body requestBody: RequestBody): Call<ResponseBody>
 
     @Headers("Content-Type: application/json")
     @GET("dump-memory")
     fun dumpMemory(): Call<ResponseBody>
 
     @Headers("Content-Type: application/json")
-    @POST("dump-params")
-    fun dumpParams(): Call<String>
+    @GET("dump-params")
+    fun dumpParams(): Call<ResponseBody>
 
     @Headers("Content-Type: application/json")
     @POST("cancel-process")
-    fun cancelProcess(): Call<String>
+    fun cancelProcess(): Call<ResponseBody>
 
     @Headers("Content-Type: application/json")
-    @POST("clear-everything")
-    fun clearEverything(): Call<String>
+    @GET("clear-everything")
+    fun clearEverything(): Call<ResponseBody>
 }

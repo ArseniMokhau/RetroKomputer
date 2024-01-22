@@ -7,11 +7,9 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.aplication.retrokomputer_front.R
 import com.aplication.retrokomputer_front.ui.API.ApiClient
-import com.google.gson.Gson
 import okhttp3.MediaType
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,7 +23,7 @@ class InstructionDetailsActivity : AppCompatActivity() {
         setContentView(R.layout.operation_basic)
 
         val outputTextView: TextView = findViewById(R.id.OuputWindow)
-        val startButton: Button = findViewById(R.id.StartButton)
+        val startButton: Button = findViewById(R.id.singleexecute)
         val dumpButton: Button = findViewById(R.id.DumpButton)
 
         var selectedOpcode = intent.getStringExtra("OPCODE_KEY") ?: ""

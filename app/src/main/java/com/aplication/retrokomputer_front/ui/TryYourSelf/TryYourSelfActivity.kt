@@ -2,11 +2,8 @@ package com.aplication.retrokomputer_front.ui.TryYourSelf
 
 import android.os.Bundle
 import android.util.Log
-import android.view.MenuItem
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.aplication.retrokomputer_front.R
@@ -21,7 +18,6 @@ import retrofit2.Response
 class TryYourSelfActivity : AppCompatActivity() {
 
 
-
     override fun onCreate(savenInstanceState: Bundle?){
         super.onCreate(savenInstanceState)
         setContentView(R.layout.activity_tryyourself)
@@ -30,15 +26,13 @@ class TryYourSelfActivity : AppCompatActivity() {
 
         val inputEditText : EditText = findViewById(R.id.InputEditText)
         val outputTextView : TextView = findViewById(R.id.outputTextView)
+        val clearEverything : Button = findViewById(R.id.cleareverything)
+        val dumpParametrs : Button = findViewById(R.id.dumpparametrs)
         val dumpButton : Button = findViewById(R.id.DumpButton)
-        val advancebutton : Button = findViewById(R.id.advancedoptionsbutton)
-        val startButton : Button = findViewById(R.id.StartButton)
-        val infoButton : Button = findViewById(R.id.InformationButton)
+        val startButton : Button = findViewById(R.id.singleexecute)
         var selectedOpcode : String
 
-        advancebutton.setOnClickListener {
-            showPopupMenu(advancebutton)
-        }
+
 
 
         startButton.setOnClickListener {
@@ -111,41 +105,109 @@ class TryYourSelfActivity : AppCompatActivity() {
             }
         }
 
+        dumpParametrs.setOnClickListener {
+            try {
+                // Execute a request to the server to dump memory using the dumpMemory endpoint
+                val apiService = ApiClient.emulatorApiService
+                val call = apiService.dumpParams()
 
+                call.enqueue(object : Callback<ResponseBody> {
+                    override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                        try {
+                            if (response.isSuccessful) {
+                                val result = response.body()?.string()
+                                outputTextView.text = "Parametrs Dumped: $result"
+                            } else {
+                                outputTextView.text = "Error: ${response.code()}, ${response.errorBody()?.string()}"
+                            }
+                        } catch (e: Exception) {
+                            outputTextView.text = "Error in onResponse: ${e.message}"
+                        }
+                    }
 
+                    override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                        outputTextView.text = "Failed to make API call: ${t.message}"
+                    }
+                })
 
-    }
-
-    private fun showPopupMenu(view: View) {
-        val popupMenu = PopupMenu(this, view)
-        popupMenu.menuInflater.inflate(R.menu.popup_menu, popupMenu.menu)
-
-        popupMenu.setOnMenuItemClickListener { item: MenuItem ->
-            when (item.itemId) {
-                R.id.SEP -> {
-                    // Handle the action for menu item 1
-                    true
-                }
-                R.id.DP -> {
-                    // Handle the action for menu item 2
-                    true
-                }
-                R.id.CP -> {
-                    // Handle the action for menu item 3
-                    true
-                }
-                R.id.CE -> {
-                    // Handle the action for menu item 4
-                    true
-                }
-                else -> false
+            } catch (e: Exception) {
+                outputTextView.text = "Error in dumpButton onClick: ${e.message}"
             }
         }
 
-        popupMenu.show()
+        clearEverything.setOnClickListener {
+            try {
+                // Execute a request to the server to dump memory using the dumpMemory endpoint
+                val apiService = ApiClient.emulatorApiService
+                val call = apiService.clearEverything()
+
+                call.enqueue(object : Callback<ResponseBody> {
+                    override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                        try {
+                            if (response.isSuccessful) {
+                                val result = response.body()?.string()
+                                outputTextView.text = "Parametrs Dumped: $result"
+                            } else {
+                                outputTextView.text = "Error: ${response.code()}, ${response.errorBody()?.string()}"
+                            }
+                        } catch (e: Exception) {
+                            outputTextView.text = "Error in onResponse: ${e.message}"
+                        }
+                    }
+
+                    override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                        outputTextView.text = "Failed to make API call: ${t.message}"
+                    }
+                })
+
+            } catch (e: Exception) {
+                outputTextView.text = "Error in dumpButton onClick: ${e.message}"
+            }
+        }
+
+
+
+
+
     }
 
 
+
+//    private fun handleSEPtemLogic(selectedOpcode: String) {
+//        try {
+//            // Place your specific logic for the SEF item here
+//            // You can use the selectedOpcode along with your logic
+//
+//            // Create a RequestBody from the JSON string
+//            val requestBody = RequestBody.create(MediaType.parse("application/json"), selectedOpcode)
+//
+//            // Perform the API call
+//            val apiService = ApiClient.emulatorApiService
+//            val call = apiService.singleExecuteProgram(requestBody)
+//
+//            call.enqueue(object : Callback<ResponseBody> {
+//                override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+//                    try {
+//                        if (response.isSuccessful) {
+//                            val result = response.body()?.string()
+//                            outputTextView.text = "SEF Operation Result: $result"
+//                        } else {
+//                            outputTextView.text = "Error: ${response.code()}, ${response.errorBody()?.string()}"
+//                        }
+//                    } catch (e: Exception) {
+//                        outputTextView.text = "Error in onResponse: ${e.message}"
+//                    }
+//                }
+//
+//                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+//                    outputTextView.text = "Failed to make API call: ${t.message}"
+//                }
+//            })
+//
+//        } catch (e: Exception) {
+//            outputTextView.text = "Error in SEF item logic: ${e.message}"
+//        }
+//    }
 
 
 }
