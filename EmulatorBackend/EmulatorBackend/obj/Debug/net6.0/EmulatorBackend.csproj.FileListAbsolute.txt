@@ -1,0 +1,64 @@
+D:\Emulator Backend\EmulatorBackend\EmulatorBackend\bin\Debug\net6.0\appsettings.Development.json
+D:\Emulator Backend\EmulatorBackend\EmulatorBackend\bin\Debug\net6.0\appsettings.json
+D:\Emulator Backend\EmulatorBackend\EmulatorBackend\bin\Debug\net6.0\EmulatorBackend.exe
+D:\Emulator Backend\EmulatorBackend\EmulatorBackend\bin\Debug\net6.0\EmulatorBackend.deps.json
+D:\Emulator Backend\EmulatorBackend\EmulatorBackend\bin\Debug\net6.0\EmulatorBackend.runtimeconfig.json
+D:\Emulator Backend\EmulatorBackend\EmulatorBackend\bin\Debug\net6.0\EmulatorBackend.dll
+D:\Emulator Backend\EmulatorBackend\EmulatorBackend\bin\Debug\net6.0\EmulatorBackend.pdb
+D:\Emulator Backend\EmulatorBackend\EmulatorBackend\bin\Debug\net6.0\Microsoft.OpenApi.dll
+D:\Emulator Backend\EmulatorBackend\EmulatorBackend\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\Emulator Backend\EmulatorBackend\EmulatorBackend\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Emulator Backend\EmulatorBackend\EmulatorBackend\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Emulator Backend\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\EmulatorBackend.csproj.AssemblyReference.cache
+D:\Emulator Backend\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\EmulatorBackend.GeneratedMSBuildEditorConfig.editorconfig
+D:\Emulator Backend\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\EmulatorBackend.AssemblyInfoInputs.cache
+D:\Emulator Backend\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\EmulatorBackend.AssemblyInfo.cs
+D:\Emulator Backend\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\EmulatorBackend.csproj.CoreCompileInputs.cache
+D:\Emulator Backend\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\EmulatorBackend.MvcApplicationPartsAssemblyInfo.cs
+D:\Emulator Backend\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\EmulatorBackend.MvcApplicationPartsAssemblyInfo.cache
+D:\Emulator Backend\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\staticwebassets\msbuild.EmulatorBackend.Microsoft.AspNetCore.StaticWebAssets.props
+D:\Emulator Backend\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\staticwebassets\msbuild.build.EmulatorBackend.props
+D:\Emulator Backend\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.EmulatorBackend.props
+D:\Emulator Backend\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.EmulatorBackend.props
+D:\Emulator Backend\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\staticwebassets.pack.json
+D:\Emulator Backend\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\staticwebassets.build.json
+D:\Emulator Backend\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\staticwebassets.development.json
+D:\Emulator Backend\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\scopedcss\bundle\EmulatorBackend.styles.css
+D:\Emulator Backend\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\EmulatorBackend.csproj.CopyComplete
+D:\Emulator Backend\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\EmulatorBackend.dll
+D:\Emulator Backend\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\refint\EmulatorBackend.dll
+D:\Emulator Backend\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\EmulatorBackend.pdb
+D:\Emulator Backend\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\EmulatorBackend.genruntimeconfig.cache
+D:\Emulator Backend\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\ref\EmulatorBackend.dll
+D:\RetroKomputer\RetroKomputer\EmulatorBackend\EmulatorBackend\bin\Debug\net6.0\appsettings.Development.json
+D:\RetroKomputer\RetroKomputer\EmulatorBackend\EmulatorBackend\bin\Debug\net6.0\appsettings.json
+D:\RetroKomputer\RetroKomputer\EmulatorBackend\EmulatorBackend\bin\Debug\net6.0\EmulatorBackend.exe
+D:\RetroKomputer\RetroKomputer\EmulatorBackend\EmulatorBackend\bin\Debug\net6.0\EmulatorBackend.deps.json
+D:\RetroKomputer\RetroKomputer\EmulatorBackend\EmulatorBackend\bin\Debug\net6.0\EmulatorBackend.runtimeconfig.json
+D:\RetroKomputer\RetroKomputer\EmulatorBackend\EmulatorBackend\bin\Debug\net6.0\EmulatorBackend.dll
+D:\RetroKomputer\RetroKomputer\EmulatorBackend\EmulatorBackend\bin\Debug\net6.0\EmulatorBackend.pdb
+D:\RetroKomputer\RetroKomputer\EmulatorBackend\EmulatorBackend\bin\Debug\net6.0\Microsoft.OpenApi.dll
+D:\RetroKomputer\RetroKomputer\EmulatorBackend\EmulatorBackend\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\RetroKomputer\RetroKomputer\EmulatorBackend\EmulatorBackend\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\RetroKomputer\RetroKomputer\EmulatorBackend\EmulatorBackend\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\RetroKomputer\RetroKomputer\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\EmulatorBackend.csproj.AssemblyReference.cache
+D:\RetroKomputer\RetroKomputer\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\EmulatorBackend.GeneratedMSBuildEditorConfig.editorconfig
+D:\RetroKomputer\RetroKomputer\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\EmulatorBackend.AssemblyInfoInputs.cache
+D:\RetroKomputer\RetroKomputer\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\EmulatorBackend.AssemblyInfo.cs
+D:\RetroKomputer\RetroKomputer\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\EmulatorBackend.csproj.CoreCompileInputs.cache
+D:\RetroKomputer\RetroKomputer\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\EmulatorBackend.MvcApplicationPartsAssemblyInfo.cs
+D:\RetroKomputer\RetroKomputer\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\EmulatorBackend.MvcApplicationPartsAssemblyInfo.cache
+D:\RetroKomputer\RetroKomputer\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\staticwebassets\msbuild.EmulatorBackend.Microsoft.AspNetCore.StaticWebAssets.props
+D:\RetroKomputer\RetroKomputer\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\staticwebassets\msbuild.build.EmulatorBackend.props
+D:\RetroKomputer\RetroKomputer\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.EmulatorBackend.props
+D:\RetroKomputer\RetroKomputer\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.EmulatorBackend.props
+D:\RetroKomputer\RetroKomputer\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\staticwebassets.pack.json
+D:\RetroKomputer\RetroKomputer\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\staticwebassets.build.json
+D:\RetroKomputer\RetroKomputer\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\staticwebassets.development.json
+D:\RetroKomputer\RetroKomputer\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\scopedcss\bundle\EmulatorBackend.styles.css
+D:\RetroKomputer\RetroKomputer\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\EmulatorBackend.csproj.CopyComplete
+D:\RetroKomputer\RetroKomputer\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\EmulatorBackend.dll
+D:\RetroKomputer\RetroKomputer\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\refint\EmulatorBackend.dll
+D:\RetroKomputer\RetroKomputer\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\EmulatorBackend.pdb
+D:\RetroKomputer\RetroKomputer\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\EmulatorBackend.genruntimeconfig.cache
+D:\RetroKomputer\RetroKomputer\EmulatorBackend\EmulatorBackend\obj\Debug\net6.0\ref\EmulatorBackend.dll

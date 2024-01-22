@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "9pHk1DyEpO8I2DJ9q58tG1Id1x64OsnFY8a1BV8GP0w=",
+  "Source": "EmulatorBackend",
+  "BasePath": "_content/EmulatorBackend",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
