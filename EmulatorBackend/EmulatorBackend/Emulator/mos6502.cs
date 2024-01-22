@@ -748,8 +748,6 @@ namespace EmulatorBackend.Emulator
                         SetZeroFlag(XRegister);
                         SetNegativeFlag(XRegister);
 
-                        // Increment the program counter
-                        ProgramCounter += 1;
                         break;
                     }
                 #endregion
@@ -764,8 +762,6 @@ namespace EmulatorBackend.Emulator
                         SetZeroFlag(YRegister);
                         SetNegativeFlag(YRegister);
 
-                        // Increment the program counter
-                        ProgramCounter += 1;
                         break;
                     }
                 #endregion
@@ -822,8 +818,6 @@ namespace EmulatorBackend.Emulator
                         SetZeroFlag(XRegister);
                         SetNegativeFlag(XRegister);
 
-                        // Increment the program counter
-                        ProgramCounter += 1;
                         break;
                     }
                 #endregion
@@ -838,8 +832,6 @@ namespace EmulatorBackend.Emulator
                         SetZeroFlag(YRegister);
                         SetNegativeFlag(YRegister);
 
-                        // Increment the program counter
-                        ProgramCounter += 1;
                         break;
                     }
 
@@ -1677,8 +1669,6 @@ namespace EmulatorBackend.Emulator
                         SetZeroFlag(Accumulator);
                         SetNegativeFlag(Accumulator);
 
-                        // Increment the program counter
-                        ProgramCounter += 1;
                         break;
                     }
                 #endregion

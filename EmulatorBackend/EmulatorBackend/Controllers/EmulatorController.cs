@@ -96,7 +96,7 @@ namespace EmulatorBackend.Controllers
             }
         }
 
-        [HttpPost("dump-memory")]
+        [HttpGet("dump-memory")]
         public ActionResult<string> DumpMemory()
         {
             try
@@ -115,7 +115,7 @@ namespace EmulatorBackend.Controllers
             }
         }
 
-        [HttpPost("dump-params")]
+        [HttpGet("dump-params")]
         public ActionResult<string> DumpParams()
         {
             try
@@ -154,7 +154,7 @@ namespace EmulatorBackend.Controllers
         }
 
         // Probably not needed
-        [HttpPost("clear-everything")]
+        [HttpGet("clear-everything")]
         public ActionResult<string> ClearEverything()
         {
             try
