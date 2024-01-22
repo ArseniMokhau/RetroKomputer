@@ -1,6 +1,8 @@
 package com.aplication.retrokomputer_front
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
@@ -12,6 +14,7 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.aplication.retrokomputer_front.databinding.ActivityMainBinding
+import com.aplication.retrokomputer_front.ui.TryYourSelf.TryYourSelfActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -40,6 +43,24 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        navView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.nav_TryYourSelf -> {
+                    // Здесь обрабатывайте нажатие на "Try Your Self"
+                    openTryYourselfActivity()
+                    true
+                }
+                else -> false
+            }
+        }
+
+    }
+
+    private fun openTryYourselfActivity() {
+        val intent = Intent(this, TryYourSelfActivity::class.java)
+        startActivity(intent)
+        Log.d("MainActivity", "openTryYourselfActivity called")
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

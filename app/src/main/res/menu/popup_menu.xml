@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/SEP"
+        android:title="Single Execute Program" />
+
+    <item
+        android:id="@+id/DP"
+        android:title="Dump Parametrs" />
+
+    <item
+        android:id="@+id/CP"
+        android:title="Cancel Process" />
+
+    <item
+        android:id="@+id/CE"
+        android:title="Clear Everything" />
+</menu>
