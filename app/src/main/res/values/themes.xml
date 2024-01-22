@@ -19,10 +19,31 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="PurpleButton" parent="Widget.AppCompat.Button.Colored">
-        <item name="android:backgroundTint">#800080</item> <!-- Цвет фона кнопки (фиолетовый) -->
-        <item name="android:textColor">#FFFFFF</item> <!-- Цвет текста на кнопке (белый) -->
+
+
+    <style name="TealBottomNavigation2Style" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="android:background">@color/tealColor</item>
+        <item name="itemBackground">@color/tealColor</item>
     </style>
+
+
+
+
+
+    <style name="TealBottomNavigationStyle3" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="android:background">@color/tealColor</item>
+        <item name="itemBackground">@color/tealColor</item>
+        <item name="itemIconTint">@color/whiteTextColor</item>
+        <item name="itemTextColor">@color/whiteTextColor</item>
+    </style>
+
+
+    <style name="BottomNavigationViewStyle" parent="Widget.Design.BottomNavigationView">
+        <item name="android:background">@color/purple_500</item>
+        <item name="itemTextColor">@color/white</item>
+    </style>
+
+
 
 
 

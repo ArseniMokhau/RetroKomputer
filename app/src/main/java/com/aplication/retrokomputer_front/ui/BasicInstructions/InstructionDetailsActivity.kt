@@ -5,6 +5,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.aplication.retrokomputer_front.R
 import com.aplication.retrokomputer_front.ui.API.ApiClient
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -37,17 +38,19 @@ class InstructionDetailsActivity : AppCompatActivity() {
             when (menuItem.itemId) {
                 R.id.menu_information -> {
                     // Обработка нажатия на "Information"
-                    // Ваш код здесь
+
                     true
                 }
                 R.id.menu_start -> {
                     // Обработка нажатия на "Start"
                     executeProgram(selectedOpcode)
+
                     true
                 }
                 R.id.menu_dump -> {
                     // Обработка нажатия на "Dump Memory"
                     dumpMemory()
+
                     true
                 }
                 else -> false
