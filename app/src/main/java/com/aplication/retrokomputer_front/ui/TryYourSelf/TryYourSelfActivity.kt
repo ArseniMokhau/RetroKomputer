@@ -42,6 +42,7 @@ class TryYourSelfActivity : AppCompatActivity() {
 
                 // Create a JSON object
                 selectedOpcode = inputEditText.text.toString()
+                selectedOpcode = "\"$selectedOpcode\""
 
                 Log.d("InstructionDetailsActivity", "Selected Opcode: $selectedOpcode")
                 // Create a RequestBody from the JSON string

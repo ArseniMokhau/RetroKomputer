@@ -38,6 +38,7 @@
 
         <activity
             android:name=".ui.TryYourSelf.TryYourSelfActivity"
+            android:label="Try yourself"
             android:theme="@style/Theme.AppCompat.Light">
 
         </activity>

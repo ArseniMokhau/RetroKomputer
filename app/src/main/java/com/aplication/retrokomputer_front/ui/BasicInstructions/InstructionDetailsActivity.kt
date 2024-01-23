@@ -23,6 +23,7 @@ class InstructionDetailsActivity : AppCompatActivity() {
     private lateinit var resultTextView : TextView
     private lateinit var startButton: Button
     private var resultMemory : String = "Empty"
+    private lateinit var Info : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +35,7 @@ class InstructionDetailsActivity : AppCompatActivity() {
 
 
         var selectedOpcode = intent.getStringExtra("OPCODE_KEY") ?: ""
+        Info = intent.getStringExtra("Information") ?: ""
 
         outputTextView.text = "Selected Opcode: \n$selectedOpcode"
 
@@ -112,7 +114,7 @@ class InstructionDetailsActivity : AppCompatActivity() {
 
 
     private fun showInformationDialog() {
-        val informationMessage = ""
+        val informationMessage = Info
 
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Information")
