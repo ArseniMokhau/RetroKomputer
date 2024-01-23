@@ -16,4 +16,89 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="description_text"><![CDATA[
+        Load/Store Operations:\n
+        \n
+        LDA: Load Accumulator.\n
+        LDX: Load X Register.\n
+        LDY: Load Y Register.\n
+        STA: Store Accumulator.\n
+        STX: Store X Register.\n
+        STY: Store Y Register.\n
+        \n
+        Transfer Operations:\n
+        \n
+        TAX: Transfer Accumulator to X.\n
+        TAY: Transfer Accumulator to Y.\n
+        TXA: Transfer X to Accumulator.\n
+        TYA: Transfer Y to Accumulator.\n
+        \n
+        Stack Operations:\n
+        \n
+        TSX: Transfer Stack Pointer to X.\n
+        TXS: Transfer X to Stack Pointer.\n
+        PHA: Push Accumulator.\n
+        PLA: Pull Accumulator.\n
+        PHP: Push Processor Status.\n
+        PLP: Pull Processor Status.\n
+        \n
+        Arithmetic Operations:\n
+        \n
+        ADC: Add with Carry.\n
+        SBC: Subtract with Carry.\n
+        INC: Increment.\n
+        INX: Increment X Register.\n
+        INY: Increment Y Register.\n
+        DEC: Decrement.\n
+        DEX: Decrement X Register.\n
+        DEY: Decrement Y Register.\n
+        \n
+        Logical Operations:\n
+        \n
+        AND: Logical AND.\n
+        EOR: Exclusive OR.\n
+        ORA: Logical OR.\n
+        \n
+        Shift and Rotate Operations:\n
+        \n
+        ASL: Arithmetic Shift Left.\n
+        LSR: Logical Shift Right.\n
+        ROL: Rotate Left through Carry.\n
+        ROR: Rotate Right through Carry.\n
+        \n
+        Jump and Branch Operations:\n
+        \n
+        JMP: Jump.\n
+        JSR: Jump to Subroutine.\n
+        RTS: Return from Subroutine.\n
+        BCC: Branch if Carry Clear.\n
+        BCS: Branch if Carry Set.\n
+        BEQ: Branch if Equal.\n
+        BNE: Branch if Not Equal.\n
+        BMI: Branch on Minus.\n
+        BPL: Branch on Plus.\n
+        BVC: Branch if Overflow Clear.\n
+        BVS: Branch if Overflow Set.\n
+        \n
+        Comparison Operations:\n
+        \n
+        CMP: Compare.\n
+        CPX: Compare X Register.\n
+        CPY: Compare Y Register.\n
+        \n
+        System Operations:\n
+        \n
+        BRK: Break.\n
+        NOP: No Operation.\n
+        RTI: Return from Interrupt.\n
+        SEI: Set Interrupt Disable.\n
+        CLI: Clear Interrupt Disable.\n
+        SED: Set Decimal Mode.\n
+        CLD: Clear Decimal Mode.\n
+        SEC: Set Carry Flag.\n
+        CLC: Clear Carry Flag.\n
+        SEV: Set Overflow Flag.\n
+        CLV: Clear Overflow Flag.
+    ]]></string>
+
 </resources>

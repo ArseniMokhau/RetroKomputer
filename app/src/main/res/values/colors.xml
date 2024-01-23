@@ -9,6 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="tealColor">#FF008080</color> <!-- Hexadecimal value for teal with full opacity -->
     <color name="whiteTextColor">#FFFFFFFF</color> <!-- Hexadecimal value for white with full opacity -->
-
+    <color name="gray">#E6E6E6</color>
 
 </resources>

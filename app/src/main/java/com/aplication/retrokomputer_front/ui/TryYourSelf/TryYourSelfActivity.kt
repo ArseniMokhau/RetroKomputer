@@ -17,7 +17,7 @@ import retrofit2.Response
 
 class TryYourSelfActivity : AppCompatActivity() {
 
-
+    private var resultMemory : String = "Empty"
     override fun onCreate(savenInstanceState: Bundle?){
         super.onCreate(savenInstanceState)
         setContentView(R.layout.activity_tryyourself)
@@ -31,6 +31,7 @@ class TryYourSelfActivity : AppCompatActivity() {
         val dumpButton : Button = findViewById(R.id.DumpButton)
         val startButton : Button = findViewById(R.id.singleexecute)
         var selectedOpcode : String
+
 
 
 
@@ -55,8 +56,23 @@ class TryYourSelfActivity : AppCompatActivity() {
                         try {
                             if (response.isSuccessful) {
                                 val result = response.body()?.string()
-                                outputTextView.text = "Result: $result"
-                            } else {
+
+                                if (result != null) {
+                                    var otvet = result.split("//")
+                                    resultMemory = """
+                                            ${otvet[0]}
+                                            Accumulator: ${otvet[1]}
+                                            X: ${otvet[2]}
+                                            Y: ${otvet[3]}
+                                            Carry Flag: ${otvet[4]}
+                                            Zero flag: ${otvet[5]}
+                                            Negative flag: ${otvet[6]}
+                                            Overflow flag: ${otvet[7]}
+                                            Decimal flag: ${otvet[8]}
+                                        """.trimIndent()
+
+                                    outputTextView.text = "$resultMemory"
+                                }} else {
                                 outputTextView.text = "Error: ${response.code()}, ${response.errorBody()?.string()}"
                             }
                         } catch (e: Exception) {
@@ -86,7 +102,7 @@ class TryYourSelfActivity : AppCompatActivity() {
                         try {
                             if (response.isSuccessful) {
                                 val result = response.body()?.string()
-                                outputTextView.text = "Memory Dumped: $result"
+                                outputTextView.text = "$result"
                             } else {
                                 outputTextView.text = "Error: ${response.code()}, ${response.errorBody()?.string()}"
                             }

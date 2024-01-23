@@ -23,20 +23,21 @@
             android:layout_height="match_parent">
 
             <!-- Placeholder for a photo -->
+
+            <!-- Background for description to add transparency -->
+
             <ImageView
                 android:id="@+id/photoImageView"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="349dp"
+                android:layout_height="210dp"
                 android:src="@drawable/mos6502"
                 app:layout_constraintBottom_toTopOf="@+id/descriptionBackground"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.5"
+                app:layout_constraintVertical_bias="0.363"
                 tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
-            <!-- Background for description to add transparency -->
             <View
                 android:id="@+id/descriptionBackground"
                 android:layout_width="364dp"
@@ -55,7 +56,7 @@
                 android:lineSpacingExtra="4dp"
                 android:text="The MOS Technology 6502 is an 8-bit microprocessor that was designed by MOS Technology. It was introduced in 1975 and became one of the most popular microprocessors of its time. The 6502 was used in a variety of home computers and game consoles, contributing to the growth of the microcomputer industry."
                 android:textColor="@android:color/white"
-                android:textSize="16sp"
+                android:textSize="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/descriptionBackground"
                 app:layout_constraintStart_toStartOf="parent"

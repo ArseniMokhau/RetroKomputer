@@ -4,11 +4,7 @@
         android:title="Information"
         android:icon="@drawable/ic_info" />
     <item
-        android:id="@+id/menu_start"
-        android:title="Start"
-        android:icon="@drawable/ic_start" />
-    <item
-        android:id="@+id/menu_dump"
-        android:title="Dump Memory"
-        android:icon="@drawable/ic_dump" />
+        android:id="@+id/menu_memory"
+        android:title="Memory"
+        android:icon="@drawable/ic_memory" />
 </menu>

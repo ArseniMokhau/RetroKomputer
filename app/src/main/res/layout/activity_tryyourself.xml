@@ -15,62 +15,65 @@
         android:gravity="center"
         android:radius="36dp"
         android:text="Clear Everything"
-        android:textSize="10dp"
+        android:textSize="13dp"
         app:layout_constraintBottom_toTopOf="@+id/singleexecute"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
+
     <Button
         android:id="@+id/dumpparametrs"
         style="@style/TextAppearance.AppCompat.Widget.Button.Colored"
-        android:layout_width="80dp"
+        android:layout_width="108dp"
         android:layout_height="48dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginBottom="24dp"
         android:backgroundTint="#800080"
         android:gravity="center"
         android:radius="36dp"
-        android:text="Dump Parametrs"
-        android:textSize="10dp"
+        android:text="Parametrs"
+        android:textSize="13dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/singleexecute"
         style="@style/TextAppearance.AppCompat.Widget.Button.Colored"
-        android:layout_width="80dp"
+        android:layout_width="108dp"
         android:layout_height="48dp"
-        android:layout_marginEnd="60dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="24dp"
         android:backgroundTint="#800080"
         android:gravity="center"
         android:radius="36dp"
-        android:text="Single Execute"
-        android:textSize="10dp"
+        android:text="Single"
+        android:textSize="13dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/DumpButton" />
+        app:layout_constraintEnd_toStartOf="@+id/DumpButton"
+        app:layout_constraintStart_toEndOf="@+id/dumpparametrs" />
 
     <Button
         android:id="@+id/DumpButton"
         style="@style/TextAppearance.AppCompat.Widget.Button.Colored"
-        android:layout_width="80dp"
+        android:layout_width="108dp"
         android:layout_height="48dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="#800080"
         android:gravity="center"
-        android:text="Dump Memory"
-        android:textSize="10dp"
+        android:radius="36dp"
+        android:text="Memory"
+        android:textSize="13dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:backgroundTint="#800080"
-        android:radius="36dp"/>
-
+        app:layout_constraintStart_toEndOf="@+id/singleexecute" />
 
     <EditText
         android:id="@+id/InputEditText"
         android:layout_width="378dp"
-        android:layout_height="64dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="25dp"
@@ -82,15 +85,15 @@
         app:layout_constraintVertical_bias="0.48000002"
         app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintWidth_default="spread">
-
     </EditText>
 
     <ScrollView
         android:id="@+id/outputScrollView"
         android:layout_width="385dp"
-        android:layout_height="388dp"
+        android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="25dp"
+        android:fillViewport="true"
         app:layout_constraintBottom_toTopOf="@+id/cleareverything"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.483"
@@ -103,6 +106,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
+            android:textColor="@color/black"
             android:text="Result"
             android:textSize="20sp" />
 

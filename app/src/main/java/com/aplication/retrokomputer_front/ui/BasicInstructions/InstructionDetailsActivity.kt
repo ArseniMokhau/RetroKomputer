@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.aplication.retrokomputer_front.R
@@ -19,18 +20,22 @@ import retrofit2.Response
 class InstructionDetailsActivity : AppCompatActivity() {
 
     private lateinit var outputTextView: TextView
-
+    private lateinit var resultTextView : TextView
+    private lateinit var startButton: Button
+    private var resultMemory : String = "Empty"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.operation_basic)
 
-        outputTextView = findViewById(R.id.outputWindow)
+        outputTextView = findViewById(R.id.outputTextView)
+        resultTextView = findViewById(R.id.ResultTextView)
+        startButton = findViewById(R.id.startButton)
 
 
         var selectedOpcode = intent.getStringExtra("OPCODE_KEY") ?: ""
 
-        outputTextView.text = "Selected Opcode: $selectedOpcode"
+        outputTextView.text = "Selected Opcode: \n$selectedOpcode"
 
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
 
@@ -38,27 +43,28 @@ class InstructionDetailsActivity : AppCompatActivity() {
             when (menuItem.itemId) {
                 R.id.menu_information -> {
                     // Обработка нажатия на "Information"
-
+                    showInformationDialog()
                     true
                 }
-                R.id.menu_start -> {
-                    // Обработка нажатия на "Start"
-                    executeProgram(selectedOpcode)
-
-                    true
-                }
-                R.id.menu_dump -> {
+                R.id.menu_memory -> {
                     // Обработка нажатия на "Dump Memory"
-                    dumpMemory()
+                    showMemoryDialog()
 
                     true
                 }
                 else -> false
             }
         }
+
+        startButton.setOnClickListener {
+            singleexecuteProgram(selectedOpcode)
+        }
     }
 
-    private fun executeProgram(selectedOpcode: String) {
+
+
+
+    private fun singleexecuteProgram(selectedOpcode: String) {
         Log.d("InstructionDetailsActivity", "Selected Opcode: $selectedOpcode")
 
         // Create a JSON object
@@ -66,50 +72,67 @@ class InstructionDetailsActivity : AppCompatActivity() {
 
         // Perform the API call
         val apiService = ApiClient.emulatorApiService
-        val call = apiService.executeProgram(requestBody)
+        val call = apiService.singleExecuteProgram(requestBody)
 
         call.enqueue(object : Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 try {
                     if (response.isSuccessful) {
                         val result = response.body()?.string()
-                        outputTextView.text = "Result: $result"
+                        resultTextView.text = "Result: Success"
+                        if (result != null) {
+                            var otvet = result.split("//")
+                            resultMemory = """
+    ${otvet[0]}
+    Accumulator: ${otvet[1]}
+    X: ${otvet[2]}
+    Y: ${otvet[3]}
+    Carry Flag: ${otvet[4]}
+    Zero flag: ${otvet[5]}
+    Negative flag: ${otvet[6]}
+    Overflow flag: ${otvet[7]}
+    Decimal flag: ${otvet[8]}
+""".trimIndent()
+
+                        }
                     } else {
-                        outputTextView.text = "Error: ${response.code()}, ${response.errorBody()?.string()}"
+                        resultTextView.text = "Error: ${response.code()}, ${response.errorBody()?.string()}"
                     }
                 } catch (e: Exception) {
-                    outputTextView.text = "Error in onResponse: ${e.message}"
+                    resultTextView.text = "Error in onResponse: ${e.message}"
                 }
             }
 
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                outputTextView.text = "Failed to make API call: ${t.message}"
+                resultTextView.text = "Failed to make API call: ${t.message}"
             }
         })
     }
 
-    private fun dumpMemory() {
-        // Execute a request to the server to dump memory using the dumpMemory endpoint
-        val apiService = ApiClient.emulatorApiService
-        val call = apiService.dumpMemory()
 
-        call.enqueue(object : Callback<ResponseBody> {
-            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                try {
-                    if (response.isSuccessful) {
-                        val result = response.body()?.string()
-                        outputTextView.text = "Memory Dumped: $result"
-                    } else {
-                        outputTextView.text = "Error: ${response.code()}, ${response.errorBody()?.string()}"
-                    }
-                } catch (e: Exception) {
-                    outputTextView.text = "Error in onResponse: ${e.message}"
-                }
-            }
 
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                outputTextView.text = "Failed to make API call: ${t.message}"
+    private fun showInformationDialog() {
+        val informationMessage = ""
+
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Information")
+            .setMessage(informationMessage)
+            .setPositiveButton("OK") { dialog, _ ->
+                dialog.dismiss()
             }
-        })
+            .show()
+    }
+
+    private fun showMemoryDialog() {
+
+        val informationMessage = resultMemory
+
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Memory")
+            .setMessage(informationMessage)
+            .setPositiveButton("OK") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
     }
 }
