@@ -18,10 +18,8 @@
             android:title="@string/menu_AdvancedInstructions" />
 
         <item
-        android:id="@+id/nav_TryYourSelf"
-        android:icon="@drawable/ic_menu_tryyourself"
-        android:title="@string/menu_TryYourSelf"
-
-            />
+            android:id="@+id/nav_TryYourSelf"
+            android:icon="@drawable/ic_menu_tryyourself"
+            android:title="@string/menu_TryYourSelf" />
     </group>
 </menu>
